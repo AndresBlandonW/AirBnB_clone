@@ -37,13 +37,23 @@ class FileStorage:
         from models.city import City
         from models.place import Place
         from models.review import Review
+        from models.amenity import Amenity
         from models.state import State
-        try:
-            with open(self.__file_path, mode="r") as file:
-                dict = json.loads(file.read())
-            for key in dict.keys():
-                class_name = dict[key]['__class__']
-                self.new(eval(class_name)(**dict[key]))
 
+        classes = {"BaseModel": BaseModel, "User": User,
+                   "Place": Place, "State": State, "City": City,
+                   "Amenity": Amenity, "Review": Review}
+
+        try:
+            with open(self.__file_path) as saved_data:
+                new_dict = json.load(saved_data)
+                for k, v in new_dict.items():
+                    for key in classes.keys():
+                        if str(new_dict[k]['__class__']) == key:
+                            new_obj = classes[key](**v)
+                            key = str((type(new_obj).__name__) +
+                                      '.' + (new_obj.id))
+                            self.__objects.update({key: new_obj})
+                            break
         except FileNotFoundError:
             pass
