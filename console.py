@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """The console AirBnB"""
-import cmd, sys
-import models
+import cmd
 from models.base_model import BaseModel
 from models.user import User
 
@@ -12,7 +11,8 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     """The class for cmd"""
     prompt = "(hbnb) "
-    instances = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
+    instances = ["BaseModel", "User", "State",
+                 "City", "Amenity", "Place", "Review"]
 
     def emptyline(self):
         """
@@ -31,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
         Quit command to exit the program
         """
         return True
-    
+
     def do_create(self, arg):
         """
         Creates a new instance of BaseModel
@@ -83,8 +83,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             key = args[0] + '.' + args[1]
             if key in all_objects:
-               del all_objects[key]
-               storage.save()
+                del all_objects[key]
+                storage.save()
             else:
                 print("** no instance found **")
 
@@ -108,7 +108,6 @@ class HBNBCommand(cmd.Cmd):
                     print(list_instan)
             else:
                 print("** class doesn't exist **")
-
 
     def do_update(self, arg):
         """
