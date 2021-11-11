@@ -6,7 +6,7 @@ from models.amenity import Amenity
 
 
 class TestBaseModel(unittest.TestCase):
-    """Unit test for Amenitity class"""
+    """Unit test for Amenitity class """
 
     @classmethod
     def setUp(cls):
