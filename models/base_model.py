@@ -41,7 +41,7 @@ class BaseModel:
     def to_dict(self):
         """Builds the dict representation of the object"""
         new_dict = {'__class__': self.__class__.__name__}
-        
+
         for key, value in self.__dict__.items():
             if key == 'created_at':
                 time_key = 'created_at'
