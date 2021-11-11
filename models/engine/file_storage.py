@@ -19,7 +19,7 @@ class FileStorage:
         """Sets in __objects the obj with key"""
         key = str((type(obj).__name__) + '.' + (obj.id))
         return self.__objects.update({key: obj})
-    
+
     def save(self):
         """Serializes __objects to the JSON file"""
         with open(self.__file_path, 'w') as fp:
@@ -44,5 +44,6 @@ class FileStorage:
             for key in dict.keys():
                 class_name = dict[key]['__class__']
                 self.new(eval(class_name)(**dict[key]))
-        except:
+
+        except FileNotFoundError:
             pass
