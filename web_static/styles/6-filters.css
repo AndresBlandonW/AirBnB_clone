@@ -1,5 +1,5 @@
 .locations {
-    height: 100%;
+    height: 99%;
     width: 25%;
     border: 1px solid #DDDDDD;
     position: absolute;
@@ -82,4 +82,13 @@ ul li {
 .locations:hover ul {
     display: block;
     margin-top: 6px;
+}
+
+.amenities:hover ul {
+    display: block;
+    margin-top: 7px;
+}
+
+.amn {
+    margin-left: 50px;
 }
