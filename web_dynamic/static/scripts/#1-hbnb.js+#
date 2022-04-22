@@ -1,0 +1,6 @@
+#!/usr/bin/node
+$(document).ready(function () {
+	$('INPUT:checkbox').change(function () {
+	
+	});
+});
